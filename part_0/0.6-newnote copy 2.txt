@@ -1,0 +1,14 @@
+// Part 0 Example 0.6: New Note (SPA)
+
+note over browser:
+form data is sent with HTTP POST
+end note
+
+browser->server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+server-->browser: HTTP POST response: STATUS 201 
+
+note over server:
+server responds with HTTP status code 
+201 which does not ask for redirect,
+stays on page and does no further requesrs
+end note

@@ -1,0 +1,45 @@
+// Part 0 Example 0.4: New Note
+
+note over browser:
+form data is sent with HTTP POST
+end note
+
+browser->server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note
+server-->browser: HTTP POST response: STATUS 302
+
+note over server:
+server responds with HTTP status code 
+302 which is a URL redirect
+end note
+
+note over browser:
+browser does HTTP GET request for notes,
+defined in the header
+end note
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/notes
+server-->browser: HTML-code
+
+note over browser:
+browser reloads notes page, causing
+three more HTTP GET requests for main.css,
+main.js and data.json
+end note
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.js
+server-->browser: main.js
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.js
+server-->browser: main.js
+
+note over browser:
+browser starts executing js-code
+that requests JSON data from server 
+end note
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+server-->browser: [{ content: "note", date: "2020-11-24" }, ...]
+
+note over browser:
+browser executes the event handler
+that renders notes to display
+end note
